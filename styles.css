@@ -1,0 +1,112 @@
+/* Body and Container Styles */
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: black;
+    color: #ccc;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Section Styles - Adjust to take up full width on small screens */
+.left-section, .right-section {
+    width: 100%;
+    padding: 18px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Form and Table Styles */
+.form_div
+{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    padding-right: 12px;
+    justify-content: space-between;
+    border: 0.8px solid #ccc;
+    margin-bottom: 36px;
+    border-radius: 16px;
+}
+button {
+    background-color: blue;
+    color: white;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #0056b3;
+}
+
+input[type="text"] {
+    width: 80%;
+    max-width: 300px;
+    background-color: black;
+    color:white;
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    font-size: 16px;
+}
+input:focus,
+button:focus {
+  outline: none;
+}
+
+#details, #leader_board {
+    width: 100%;
+    justify-content: space-between;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+}
+.details_div,.leader_board_div
+{
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 16px;
+}
+th{
+    font-size: 15px;
+}
+td{
+    font-size: 12px;
+}
+thead,tr{
+    border-bottom: 1px solid #ddd; 
+    justify-content: space-between;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+tr:last-child,thead:last-child{
+    border-bottom: none;
+}
+/* Media Query for Larger Screens */
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row; 
+    }
+    .left-section, .right-section {
+        flex: 1;
+        width: auto;
+    }
+    .left-section {
+        flex: 2;
+    }
+    .right-section {
+        flex: 1;
+    }
+}
