@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="gitstyle.css">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>GitHub Portfolio Generator</title>
+    <link rel="stylesheet" href="gitstyle.css">
 </head>
 <body>
-    <input type="text" id="username" placeholder="Enter Git Profile">
-    <button onclick="getProfile()">Show</button>
-    <div id="resultArea"></div>
-    <script src="script.js"></script>
+    <div class="container">
+        <input type="text" id="username" placeholder="Enter GitHub Username">
+        <button onclick="getProfile()">Generate Portfolio</button>
+        <div id="resultArea" class="portfolio"></div>
+    </div>
+    <script src="gitscript.js"></script>
 </body>
 </html>
