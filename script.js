@@ -1,5 +1,5 @@
 let map=new Map();
-let leet_map=new Map();
+// let leet_map=new Map();
 async function getLeetCodeData() {
   const username = document.getElementById("username").value.trim();
   const tableBody = document.getElementById("profile-table-body");
@@ -9,10 +9,10 @@ async function getLeetCodeData() {
   try {
     const response = await fetch(`https://leetcode-stats-api.herokuapp.com/${username}`);
 
-
      if (!response.ok) throw new Error("User not found or API error");
 
     const data = await response.json();
+    console.log(data);
 
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
@@ -25,15 +25,16 @@ async function getLeetCodeData() {
        <td>${data.ranking}</td>
     `;
     map.set(username,data.ranking);
-    const leet={
-    "username":username,
-    "easySolved":data.easySolved,
-    "mediumSolved":data.mediumSolved,
-    "hardSolved":data.hardSolved,
-    "totalSolved":data.totalSolved,
-    "ranking":data.ranking,
-};
-leet_map.set(username,leet);
+//     const leet={
+//     "username":username,
+//     "easySolved":data.easySolved,
+//     "mediumSolved":data.mediumSolved,
+//     "hardSolved":data.hardSolved,
+//     "totalSolved":data.totalSolved,
+//     "ranking":data.ranking,
+// };
+// leet_map.set(username,leet);
+// console.log(leet_map);
     tableBody.appendChild(newRow);
     let mapSort = new Map([...map.entries()].sort((a, b) => a[1] - b[1]));
     //console.log(mapSort);
@@ -43,7 +44,7 @@ leet_map.set(username,leet);
 
         let leadernewRow = document.createElement("tr");
         leadernewRow.innerHTML += `
-      <td><a href="gitindex.html">${user}</a></td>
+      <td><a href="gitindex.html" target="_blank">${user}</a></td>
        <td>${ranking}</td>
     `
     ;leadertableBody.appendChild(leadernewRow);
@@ -64,6 +65,7 @@ leet_map.set(username,leet);
 }
 async function getProfile(){
     try{
+        //console.log(leet_map);
         let gitProfile=document.getElementById("username").value;
         let profileUrl=`https://api.github.com/users/${gitProfile}`;
         let repoUrl=`https://api.github.com/users/${gitProfile}/repos`;
@@ -117,7 +119,7 @@ async function getProfile(){
         let geminiInfo=document.createElement("p");
         geminiInfo.innerHTML=`<b>AI Generated Professional Summary:</b><br/>${summary}`;
         resultArea.append(geminiInfo);
-        console.log(geminiData);
+        //console.log(geminiData);
     }catch(e){
         console.log(e.message);
     }
