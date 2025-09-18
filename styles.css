@@ -1,107 +1,77 @@
-/* Body and Container Styles */
+:root {
+    --bg-color: #0c0c0c;
+    --card-bg: #1a1a1a;
+    --text-color: #e0e0e0;
+    --accent-color: #bb86fc; /* A soft, elegant purple */
+    --link-color: #03dac6; /* A clean, bright cyan for links */
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --border-color: #2a2a2a;
+    --table-header-color: #444444;
+}
+
+/* Base styles for a modern, clean look */
 body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     margin: 0;
-    padding: 20px;
-    background-color: black;
-    color: #ccc;
-    font-family: Arial, sans-serif;
+    padding: 40px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    color: var(--accent-color);
+}
+
+.description {
+    font-size: 1.2em;
+    color: #a0a0a0;
+    margin-bottom: 40px;
+}
+
+h3 {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: left;
+    color: var(--text-color);
+}
+
+.leaderboard-note {
+    font-size: 0.9em;
+    color: #777;
+    text-align: left;
+    margin-bottom: 10px;
 }
 
 .container {
     display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    width: 100%;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+    justify-content: center;
 }
 
-/* Section Styles - Adjust to take up full width on small screens */
+/* Section Styling */
 .left-section, .right-section {
-    width: 100%;
-    padding: 18px;
-    box-sizing: border-box;
-    text-align: center;
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    flex: 1;
+    min-width: 300px;
 }
 
-/* Form and Table Styles */
-.form_div
-{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px;
-    padding-right: 12px;
-    justify-content: space-between;
-    border: 0.8px solid #ccc;
-    margin-bottom: 36px;
-    border-radius: 16px;
-}
-button {
-    background-color: blue;
-    color: white;
-    padding: 8px 10px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    justify-content: flex-end;
-    cursor: pointer;
-}
-button:hover {
-    background-color: #0056b3;
-}
-
-input[type="text"] {
-    width: 80%;
-    max-width: 300px;
-    background-color: black;
-    color:white;
-    flex-grow: 1;
-    padding: 10px;
-    border: none;
-    font-size: 16px;
-}
-input:focus,
-button:focus {
-  outline: none;
-}
-
-#details, #leader_board {
-    width: 100%;
-    justify-content: space-between;
-    border-collapse: collapse;
-    margin-left: auto;
-    margin-right: auto;
-}
-.details_div,.leader_board_div
-{
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 16px;
-}
-th{
-    font-size: 15px;
-}
-td{
-    font-size: 12px;
-}
-thead,tr{
-    border-bottom: 1px solid #ddd; 
-    justify-content: space-between;
-}
-th, td {
-    padding: 10px;
-    text-align: left;
-}
-tr:last-child,thead:last-child{
-    border-bottom: none;
-}
-/* Media Query for Larger Screens */
+/* Flexbox for sections on larger screens */
 @media (min-width: 768px) {
     .container {
-        flex-direction: row; 
-    }
-    .left-section, .right-section {
-        flex: 1;
-        width: auto;
+        flex-direction: row;
     }
     .left-section {
         flex: 2;
@@ -109,4 +79,100 @@ tr:last-child,thead:last-child{
     .right-section {
         flex: 1;
     }
+}
+
+/* Form Styling (Input and Button) */
+.form-div {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+input[type="text"] {
+    flex-grow: 1;
+    padding: 12px 20px;
+    background-color: #232323;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 16px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(187, 134, 252, 0.5);
+}
+
+button {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    background-color: #c9a6ff;
+}
+
+/* Table Styling */
+.details-div, .leader-board-div {
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background-color: #232323;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead th {
+    font-weight: 600;
+    text-align: center;
+    padding: 15px 10px;
+    border-bottom: 2px solid var(--border-color);
+    color: var(--accent-color);
+}
+
+tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+tbody tr:hover {
+    background-color: #2a2a2a;
+}
+
+td {
+    padding: 12px 10px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Specific colors for LeetCode difficulties */
+.easy-solved { color: #03dac6; }
+.medium-solved { color: #ffcc80; }
+.hard-solved { color: #cf6679; }
+
+/* Leaderboard link styling */
+.leaderboard-username a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.leaderboard-username a:hover {
+    color: #4fe2d1;
+    text-decoration: underline;
 }

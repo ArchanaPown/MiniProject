@@ -17,21 +17,21 @@ async function getLeetCodeData() {
         const newRow = document.createElement("tr");
         newRow.innerHTML = `
       <td>${username}</td>
-      <td>${data.easySolved}</td>
-       <td>${data.mediumSolved}</td>
-       <td>${data.hardSolved}</td>
+      <td>${data.ranking}</td>
+      <td class="easy-solved">${data.easySolved}</td>
+      <td class="medium-solved">${data.mediumSolved}</td>
+      <td class="hard-solved">${data.hardSolved}</td>
       <td>${data.totalSolved}</td>
-       
-       <td>${data.ranking}</td>
+        
     `;
         map.set(username, data.ranking);
-        //     const leet={
-        //     "username":username,
-        //     "easySolved":data.easySolved,
-        //     "mediumSolved":data.mediumSolved,
-        //     "hardSolved":data.hardSolved,
-        //     "totalSolved":data.totalSolved,
-        //     "ranking":data.ranking,
+        //     const leet={
+        //     "username":username,
+        //     "easySolved":data.easySolved,
+        //     "mediumSolved":data.mediumSolved,
+        //     "hardSolved":data.hardSolved,
+        //     "totalSolved":data.totalSolved,
+        //     "ranking":data.ranking,
         // };
         // leet_map.set(username,leet);
         // console.log(leet_map);
@@ -47,7 +47,7 @@ async function getLeetCodeData() {
             let leadernewRow = document.createElement("tr");
             leadernewRow.innerHTML = `
         <td>${sno}</td>
-        <td><a href="gitindex.html" target="_blank">${user}</a></td>
+        <td class="leaderboard-username"><a href="gitindex.html" target="_blank">${user}</a></td>
     `;
             leadertableBody.appendChild(leadernewRow);
             sno++; // Increment serial number

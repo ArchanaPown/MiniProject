@@ -3,47 +3,51 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Leetcode Comparisor</title>
+        <title>Leetcode Insights</title>
         <link rel="stylesheet" href="styles.css"/>
         <script src="script.js"></script>
     </head>
     <body>
-        <h1>Leetcode Profiles</h1>
-        <div class="container" align="center">
-        <div class="left-section" align="center" style="border-right: 1px solid #ccc;">
-                <div class="form_div">
-                <input type="text" id="username" placeholder="Username" required/>
-                <button onclick="getLeetCodeData()">Compare</button>
+        <h1>LeetCode Insights</h1>
+        <p class="description">Compare LeetCode profiles and track your progress on the leaderboard.</p>
+        <div class="container">
+            <div class="left-section">
+                <div class="form-div">
+                    <input type="text" id="username" placeholder="Enter LeetCode Username" required/>
+                    <button onclick="getLeetCodeData()">Add Row</button>
                 </div>
-            <h3 align="left">Details</h3>
-            <div class="details_div">
-            <table id="details">
-                <thead>
-                    
-                    <th>UserName</th>
-                    <th>Rank</th>
-                    <th style="color:red">Hard</th>
-                    <th style="color:yellow">Medium</th>
-                    <th style="color:green">Easy</th>
-                    <th>Total</th>
-                </thead>
-                <tbody id="profile-table-body"></tbody>
-            </table>
+                <h3>Details</h3>
+                <div class="details-div">
+                    <table id="details">
+                        <thead>
+                            <tr>
+                                <th>UserName</th>
+                                <th>Rank</th>
+                                <th>Easy Solved</th>
+                                <th>Medium Solved</th>
+                                <th>Hard Solved</th>
+                                <th>Total Solved</th>
+                            </tr>
+                        </thead>
+                        <tbody id="profile-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="right-section">
+                <h3>Leaderboard</h3>
+                <p class="leaderboard-note">Click a username to generate a portfolio.</p>
+                <div class="leader-board-div">
+                    <table id="leader-board">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>UserName</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leader-table-body"></tbody>
+                    </table>
+                </div>
             </div>
         </div>
-
-        <div class="right-section">
-            <h3 align="left">LeaderBoard</h3>
-            <div class="leader_board_div">
-             <table id="leader_board">
-                <thead>
-                <th>SNo</th>
-                <th>UserName</th>
-                </thead>
-                <tbody id="leader-table-body"></tbody>
-            </table>
-            </div>
-        </div>
-    </div>
     </body>
 </html>
