@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Leetcode Comparisor</title>
+        <link rel="stylesheet" href="styles.css"/>
+        <script src=""></script>
+    </head>
+    <body>
+        <h1>Leetcode Profiles</h1>
+        <div class="container" align="center">
+        <div class="left-section" align="center" style="border-right: 1px solid #ccc;">
+            <form align="center">
+                <div class="form_div">
+                <input type="text" id="username" placeholder="Username" required/>
+                <button type="button" onclick="getLeetCodeData()">Compare</button>
+                </div>
+            </form>
+            <h3 align="left">Details</h3>
+            <div class="details_div">
+            <table id="details">
+                <thead>
+                    <th>UserName</th>
+                    <th style="color:red">Hard</th>
+                    <th style="color:yellow">Medium</th>
+                    <th style="color:green">Easy</th>
+                    <th>Total</th>
+                    <th>Rank</th>
+
+                </thead>
+                <tbody id="profile-table-body">
+
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <h3 align="left">LeaderBoard</h3>
+            <div class="leader_board_div">
+             <table id="leader_board">
+                <thead>
+                <th>SNo</th>
+                <th>UserName</th>
+                </thead>
+            </table>
+            </div>
+        </div>
+    </div>
+    <script src="leet.js"></script>
+    </body>
+</html>
