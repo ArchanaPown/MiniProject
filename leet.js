@@ -12,6 +12,18 @@ async function getLeetCodeData() {
 
     const data = await response.json();
 
+    const isInvalid = (
+      data.easySolved == 0 &&
+      data.totalSolved == 0 &&
+      data.mediumSolved === 0 &&
+      data.hardSolved === 0 &&
+      data.ranking === 0
+    );
+    if (isInvalid) {
+      alert("Invalid username or no data found for this user.");
+      return;
+    }
+    
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
       <td>${username}</td>
@@ -26,16 +38,7 @@ async function getLeetCodeData() {
     map.set(username,data.ranking);
     tableBody.appendChild(newRow);
     
-   
-   
-    
   } catch (error) {
     alert(`Error: ${error.message}`);
   }
-  
-   
-    
-  
- 
-
 }
