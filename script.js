@@ -8,12 +8,28 @@ async function getLeetCodeData() {
 
     try {
         const response = await fetch(`https://leetcode-stats-api.herokuapp.com/${username}`);
-
         if (!response.ok) throw new Error("User not found or API error");
-
         const data = await response.json();
         console.log(data);
-
+        if(data.status==='error') {
+            let errorMessageIssue=document.getElementById("userValidation");
+            errorMessageIssue.innerText="Profile Not Found";
+            errorMessageIssue.style.color="red";
+            return;
+            //throw new Error(data.message);
+        }else{
+            let errorMessageIssue=document.getElementById("userValidation");
+            errorMessageIssue.innerText=""; 
+        }
+        if(map.has(username)) {
+            let errorMessageIssue=document.getElementById("userValidation");
+            errorMessageIssue.innerText="Profile Already Added";
+            errorMessageIssue.style.color="red";
+            return;
+        }else{
+            let errorMessageIssue=document.getElementById("userValidation");
+            errorMessageIssue.innerText="";
+        }
         const newRow = document.createElement("tr");
         newRow.innerHTML = `
       <td>${username}</td>
