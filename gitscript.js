@@ -1,15 +1,31 @@
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
 async function getProfile() {
+    
+    const loading = document.getElementById("loading");
+    const resultArea = document.getElementById("resultArea");
+    loading.style.display = "block"; // Show loading
+    resultArea.innerHTML = ""; // Clear previous results
+
     try {
-        let gitProfile = document.getElementById("username").value;
+        let gitProfile = document.getElementById("username").value.trim();
+        if (!gitProfile) throw new Error("GitHub username is required");
+
         let profileUrl = `https://api.github.com/users/${gitProfile}`;
         let repoUrl = `https://api.github.com/users/${gitProfile}/repos`;
 
         const profileRes = await fetch(profileUrl);
-        if (!profileRes.ok) throw new Error("User not found");
+        if (!profileRes.ok){  loading.style.display="none"; throw new Error("User not found");
+           
+        }
         const profileData = await profileRes.json();
 
         const repoRes = await fetch(repoUrl);
-        if (!repoRes.ok) throw new Error("No Repositories found");
+        if (!repoRes.ok){ loading.style.display = "none"; throw new Error("No Repositories found");
+        }
         const repoData = await repoRes.json();
 
         let resultArea = document.getElementById("resultArea");
@@ -91,3 +107,16 @@ async function getProfile() {
         document.getElementById("resultArea").innerHTML = `<p style="color:red;">${e.message}</p>`;
     }
 }
+
+// Auto-run on page load if URL parameter is present
+window.onload = function () {
+    const githubUsername = getQueryParam("github");
+    const inputBox = document.getElementById("username");
+
+    if (githubUsername) {
+        inputBox.value = githubUsername;
+        getProfile();
+    } else {
+        inputBox.style.display = "block"; // Show input box if no username in URL
+    }
+};

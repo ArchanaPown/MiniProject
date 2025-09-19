@@ -9,7 +9,13 @@
 <body>
     <div class="container">
         <input type="text" id="username" placeholder="Enter GitHub Username">
-        <button onclick="getProfile()">Generate Portfolio</button>
+        <button onclick="getProfile()" id="generate">Generate Portfolio</button>
+        
+<div id="loading" style="display: none;" class="loading">
+  <img src="loading.gif" alt="Loading..." />
+  <p>Fetching awesomeness from GitHub... hang tight!</p>
+</div>
+
         <div id="resultArea" class="portfolio"></div>
     </div>
     <script src="gitscript.js"></script>

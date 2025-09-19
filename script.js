@@ -8,9 +8,9 @@ async function getLeetCodeData() {
 
     try {
         const response = await fetch(`https://leetcode-stats-api.herokuapp.com/${username}`);
+        const response2 = await fetch(`https://alfa-leetcode-api.onrender.com/${username}`); 
         if (!response.ok) throw new Error("User not found or API error");
         const data = await response.json();
-        console.log(data);
         if(data.status==='error') {
             let errorMessageIssue=document.getElementById("userValidation");
             errorMessageIssue.innerText="Profile Not Found";
@@ -21,6 +21,11 @@ async function getLeetCodeData() {
             let errorMessageIssue=document.getElementById("userValidation");
             errorMessageIssue.innerText=""; 
         }
+        //console.log(data);
+        const data2= await response2.json();
+        const githubUsername = data2.gitHub?.split("https://github.com/")[1];
+        //console.log(githubUsername);        
+        
         if(map.has(username)) {
             let errorMessageIssue=document.getElementById("userValidation");
             errorMessageIssue.innerText="Profile Already Added";
@@ -63,7 +68,7 @@ async function getLeetCodeData() {
             let leadernewRow = document.createElement("tr");
             leadernewRow.innerHTML = `
         <td>${sno}</td>
-        <td class="leaderboard-username"><a href="gitindex.html" target="_blank">${user}</a></td>
+        <td class="leaderboard-username"><a href="gitindex.html?github=${githubUsername}" target="_blank">${user}</a></td>
     `;
             leadertableBody.appendChild(leadernewRow);
             sno++; // Increment serial number
