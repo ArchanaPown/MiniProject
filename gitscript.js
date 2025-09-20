@@ -18,13 +18,16 @@ async function getProfile() {
         let repoUrl = `https://api.github.com/users/${gitProfile}/repos`;
 
         const profileRes = await fetch(profileUrl);
-        if (!profileRes.ok){  loading.style.display="none"; throw new Error("User not found");
-           
+        if (!profileRes.ok){
+            loading.style.display = "none";
+            throw new Error("User not found");
         }
         const profileData = await profileRes.json();
 
         const repoRes = await fetch(repoUrl);
-        if (!repoRes.ok){ loading.style.display = "none"; throw new Error("No Repositories found");
+        if (!repoRes.ok){
+            loading.style.display = "none";
+            throw new Error("No Repositories found");
         }
         const repoData = await repoRes.json();
 
@@ -90,7 +93,6 @@ async function getProfile() {
         projectsDiv.append(scrollContainer);
         resultArea.append(projectsDiv);
 
-
         // Contact Section
         let contactDiv = document.createElement("div");
         contactDiv.className = "contact";
@@ -98,13 +100,18 @@ async function getProfile() {
             <h3>Contact</h3>
             <a href="${profileData.html_url}" target="_blank">GitHub</a>
             ${profileData.blog ? `<a href="${profileData.blog}" target="_blank">Website</a>` : ""}
-            ${profileData.twitter_username ? `<atps://twitter.com/${profileData.twitter_username}` : ""}
+            ${profileData.twitter_username ? `<a href="https://twitter.com/${profileData.twitter_username}" target="_blank">Twitter</a>` : ""}
         `;
         resultArea.append(contactDiv);
+        
+        // Hide the loading spinner after all content is appended
+        loading.style.display = "none";
 
     } catch (e) {
         console.log(e.message);
         document.getElementById("resultArea").innerHTML = `<p style="color:red;">${e.message}</p>`;
+        // Hide the loading spinner on error
+        loading.style.display = "none";
     }
 }
 

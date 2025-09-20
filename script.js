@@ -13,7 +13,7 @@ async function getLeetCodeData() {
         const data = await response.json();
         if(data.status==='error') {
             let errorMessageIssue=document.getElementById("userValidation");
-            errorMessageIssue.innerText="Profile Not Found";
+            errorMessageIssue.innerText="Profile Not Found. Enter a valid username.";
             errorMessageIssue.style.color="red";
             return;
             //throw new Error(data.message);
